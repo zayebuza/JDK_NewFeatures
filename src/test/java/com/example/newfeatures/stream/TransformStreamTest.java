@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Stream;
 
 /**
@@ -17,7 +18,6 @@ import java.util.stream.Stream;
 public class TransformStreamTest {
     String [] arr = {"a","b","c","d","a","d"};
     Stream stream = Arrays.stream(arr);
-
     //@Before
     public void initStream(){
 
@@ -26,12 +26,12 @@ public class TransformStreamTest {
 
     /**
      *  distinct: 对于Stream中包含的元素进行去重操作（去重逻辑依赖元素的equals方法），新生成的Stream中没有重复的元素；
+     *
      */
     @Test
     public void distinctTest(){
-      //  System.out.println(stream.count());
-        stream.distinct();
-        System.out.println(stream.count());
+        System.out.println("下面一行是distinct之后的集合元素：");
+        stream.distinct().forEach(System.out::print);
 
     }
 
@@ -40,7 +40,8 @@ public class TransformStreamTest {
      */
     @Test
     public void filterTest(){
-        arr[1]="ddd";
+        System.out.println("下面一行是filter之后的结果,去掉等于a的元素");
+        stream.filter(p -> !p.equals("a")).forEach(System.out::print);
     }
 
     /**
@@ -51,7 +52,8 @@ public class TransformStreamTest {
      */
     @Test
     public void mapTest(){
-
+        System.out.println("下面一行是map之后的结果，所有元素+a：");
+        stream.map(p -> p + "a").forEach(System.out::print);
 
     }
 
@@ -78,7 +80,8 @@ public class TransformStreamTest {
      */
     @Test
     public void limitTest(){
-
+        System.out.println("我是limit之后的结果，取出两个元素");
+        stream.limit(2).forEach(System.out::print);
     }
 
 
@@ -88,5 +91,13 @@ public class TransformStreamTest {
     @Test
     public void skipTest(){
 
+    }
+
+    /**
+     * 快速生成10个1-100之间的正整数并排序
+     */
+    @Test
+    public void initNums(){
+        new Random().ints(1,100).limit(10).sorted().forEach(System.out::println);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.newfeatures.stream;
 
+import org.assertj.core.util.Lists;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class CreateStreamTest {
         System.out.println(stream2.count());
         System.out.println(stream1.count());
 
+        new Thread(() -> System.out.println("haha"));
 
     }
 
