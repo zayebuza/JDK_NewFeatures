@@ -31,4 +31,5 @@ new Thread(new Runnable() {
 ```
 new Thread(()->System.out.println("Hello World!"));
 ```
-
+用法参考：https://www.cnblogs.com/franson-2016/p/5593080.html
+参考书：Java8实战
